@@ -1,0 +1,8 @@
+groq sentence-transformers
+pdfminer.six
+langchain
+faiss-cpu
+tiktoken
+python-dotenv
+langchain-community
+langchain-openai
