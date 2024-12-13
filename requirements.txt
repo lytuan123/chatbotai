@@ -1,4 +1,5 @@
-groq sentence-transformers
+groq 
+sentence-transformers
 pdfminer.six
 langchain
 faiss-cpu
