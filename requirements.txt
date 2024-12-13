@@ -1,9 +1,32 @@
-groq 
-sentence-transformers
-pdfminer.six
-langchain
-faiss-cpu
-tiktoken
-python-dotenv
-langchain-community
-langchain-openai
+# Core Libraries
+fastapi==0.109.0
+uvicorn==0.27.0
+python-dotenv==1.0.0
+
+# PDF and Text Processing
+pdfminer.six==20231228
+tiktoken==0.5.2
+
+# Machine Learning & NLP
+sentence-transformers==2.4.0
+faiss-cpu==1.7.4
+torch==2.1.2
+
+# LangChain Ecosystem
+langchain==0.1.5
+langchain-community==0.1.5
+langchain-openai==0.0.2.post1
+
+# LLM Integration
+groq==0.3.0
+
+# Additional Dependencies
+pydantic==2.6.1
+typing-extensions==4.9.0
+
+# API & Deployment
+gunicorn==21.2.0
+httpx==0.26.0
+
+# Development & Debugging
+logging==0.5.1.2
