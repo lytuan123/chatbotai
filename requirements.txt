@@ -12,18 +12,17 @@ sentence-transformers==2.4.0
 faiss-cpu==1.7.4
 torch==2.1.2
 
-# LangChain Ecosystem
-langchain
-langchain-community
-langchain-core
-langchain_huggingface
-
+# LangChain Ecosystem (Cập nhật phiên bản cụ thể)
+langchain==0.1.10
+langchain-community==0.0.20
+langchain-core==0.1.24
+langchain-huggingface==0.1.1
 
 # LLM Integration
 groq==0.7.0
 
 # Additional Dependencies
-pydantic==2.6.1
+pydantic==2.5.2 # Sử dụng phiên bản tương thích với LangChain
 typing-extensions==4.9.0
 
 # API & Deployment
@@ -31,4 +30,4 @@ gunicorn==21.2.0
 httpx==0.26.0
 
 # Development & Debugging
-logging
+# logging (thường có sẵn trong Python, không cần khai báo trong requirements)
