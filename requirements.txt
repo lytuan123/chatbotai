@@ -14,7 +14,7 @@ numpy==1.26.3
 torch==2.1.2
 
 # Optional but recommended
-pydantic==2.6.1
+pydantic
 typing-extensions==4.9.0
 
 # For API and async
