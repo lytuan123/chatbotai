@@ -11,7 +11,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from pydantic import BaseModel, Field
-from groq import Client as GroqClient  # Thay đổi import
+from groq import Client as GroqClient
 
 # Configure logging
 logging.basicConfig(
