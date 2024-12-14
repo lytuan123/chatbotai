@@ -1,7 +1,7 @@
 import os
 import logging
 import hashlib
-from typing import List, Dict, Tuple
+from typing import List, Tuple
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.llms.base import LLM
