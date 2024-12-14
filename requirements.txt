@@ -10,24 +10,32 @@ tiktoken==0.5.2
 # Machine Learning & NLP
 sentence-transformers==2.4.0
 faiss-cpu==1.7.4
-torch==2.1.2
+torch==2.1.2+cpu 
+--find-links https://download.pytorch.org/whl/torch_stable.html
 
-# LangChain Ecosystem (Cập nhật phiên bản cụ thể)
+# LangChain Ecosystem
 langchain==0.1.10
-langchain-community==0.0.20
 langchain-core==0.1.24
-langchain-huggingface==0.1.1
+langchain-community==0.0.20
 
 # LLM Integration
 groq==0.7.0
 
+# Embeddings and NLP
+transformers==4.37.2
+huggingface-hub==0.21.4
+
+# Data Processing
+numpy>=1.22.0
+pandas>=2.0.0
+
 # Additional Dependencies
-pydantic==2.5.2 # Sử dụng phiên bản tương thích với LangChain
+pydantic==2.5.2
 typing-extensions==4.9.0
 
 # API & Deployment
 gunicorn==21.2.0
 httpx==0.26.0
 
-# Development & Debugging
-# logging (thường có sẵn trong Python, không cần khai báo trong requirements)
+# Extra Performance Libraries
+scipy>=1.10.0
