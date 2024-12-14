@@ -6,7 +6,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.llms.base import LLM
 from langchain.embeddings import SentenceTransformerEmbeddings
-from langchain.vectorstores import FAISS
+ffrom langchain_community.vectorstores import FAISS
 from groq import Groq
 from .utils import load_json
 
