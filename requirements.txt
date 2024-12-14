@@ -13,9 +13,9 @@ faiss-cpu==1.7.4
 torch==2.1.2
 
 # LangChain Ecosystem
-langchain==0.1.5
+langchain
 langchain-community
-langchain-core==0.1.3
+langchain-core
 
 # LLM Integration
 groq==0.7.0
