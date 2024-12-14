@@ -1,24 +1,10 @@
-# FastAPI and related libraries
-fastapi==0.108.0
-uvicorn==0.27.0
-python-dotenv==1.0.0
-
-# LangChain and dependencies
-langchain==0.3.0
-pydantic
-langchain-community
-# Embeddings and ML
-sentence-transformers==2.2.2
-faiss-cpu==1.7.4
-torch
+fastapi
+uvicorn
+python-dotenv
+httpx
+langchain
+sentence-transformers
+faiss-cpu
 groq
-# Additional utilities
-transformers==4.37.2
-huggingface-hub==0.21.4
-numpy>=1.22.0
-pandas>=2.0.0
-
-# API Deployment
-gunicorn==21.2.0
-httpx==0.26.0
+fastapi
 
