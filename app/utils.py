@@ -2,7 +2,7 @@ import json
 import os
 import hashlib
 
-def load_json(file_name: str) -> Dict:
+def load_json(file_name: str) -> dict:
     if not os.path.exists(file_name):
         with open(file_name, "w", encoding="utf-8") as f:
             json.dump({}, f)
