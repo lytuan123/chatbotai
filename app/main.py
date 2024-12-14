@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict
 
-from .utils import chatbot_manager, ChatRequest
+from app.utils import chatbot_manager, ChatRequest
 
 app = FastAPI(
     title="PDF Chatbot API",
