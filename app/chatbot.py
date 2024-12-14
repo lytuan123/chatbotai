@@ -8,7 +8,7 @@ from langchain.llms.base import LLM
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import FAISS
 from groq import Groq
-from app.utils import load_json, save_json
+from .utils import load_json
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
