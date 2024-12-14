@@ -1,3 +1,4 @@
+# utils.py
 import os
 import logging
 import json
@@ -5,14 +6,12 @@ import hashlib
 from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
-from sentence_transformers import SentenceTransformer
-from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings  # Thay đổi import
 from langchain_community.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from pydantic import BaseModel, Field
-from groq import Client as GroqClient
-
+from groq import Client as GroqClient  # Thay đổi import
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -30,8 +29,9 @@ class ChatRequest(BaseModel):
 class ChatbotManager:
     def __init__(self, faiss_index_dir: str = "faiss_index"):
         self.faiss_index_dir = faiss_index_dir
-        self.embedding_model = SentenceTransformerEmbeddings(
-            model_name='intfloat/multilingual-e5-large'
+        self.embedding_model = HuggingFaceEmbeddings(
+            model_name='intfloat/multilingual-e5-large',
+            model_kwargs={'device': 'cpu'} # Thêm dòng này
         )
         self.faiss_indices = {}
         self.chains = {}
