@@ -8,7 +8,7 @@ langchain==0.1.5
 sentence-transformers==2.3.1
 groq
 faiss-cpu==1.7.4
-
+langchain_community
 # Data handling
 numpy==1.26.3
 torch==2.1.2
