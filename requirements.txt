@@ -6,7 +6,7 @@ python-dotenv==1.0.0
 # LangChain and dependencies
 langchain==0.3.0
 pydantic
-
+langchain-community
 # Embeddings and ML
 sentence-transformers==2.2.2
 faiss-cpu==1.7.4
