@@ -5,12 +5,13 @@ import hashlib
 from typing import Dict, List, Optional
 
 from dotenv import load_dotenv
-from langchain.embeddings import SentenceTransformerEmbeddings
-from langchain.vectorstores import FAISS
+from sentence_transformers import SentenceTransformer
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from pydantic import BaseModel, Field
-from groq import Groq
+from groq import Client as GroqClient  # Thay đổi import
 
 # Configure logging
 logging.basicConfig(
@@ -30,8 +31,7 @@ class ChatbotManager:
     def __init__(self, faiss_index_dir: str = "faiss_index"):
         self.faiss_index_dir = faiss_index_dir
         self.embedding_model = SentenceTransformerEmbeddings(
-            model_name='intfloat/multilingual-e5-large', 
-            model_kwargs={"device": "cpu"}
+            model_name='intfloat/multilingual-e5-large'
         )
         self.faiss_indices = {}
         self.chains = {}
@@ -123,15 +123,8 @@ class ChatbotManager:
         chain = self.chains[request.topic]
 
         # System message for context
-        system_message = """Bạn là một trợ lý ảo thông minh, thân thiện và hữu ích. Bạn cũng có thể tương tác với người dùng như một AI thông minh.
-Bạn có dữ liệu từ một số tài liệu.
-- Nếu người dùng hỏi về nội dung có trong tài liệu, hãy dùng context đó để trả lời.
-- Nếu không tìm thấy thông tin trong tài liệu, hãy trả lời với kiến thức chung của bạn, như một AI thông minh.
-- Nếu người dùng chỉ chào, hãy chào lại.
-- Nếu thấy một từ không quen, cố gắng đoán từ gần nghĩa trong tài liệu hoặc hỏi lại người dùng.
-- Hãy trả lời một cách chuyên nghiệp, ngắn gọn, súc tích nhưng đầy đủ thông tin.
-- Hãy đảm bảo trả lời trọn vẹn câu, không kết thúc giữa chừng.
-- Hãy cung cấp câu trả lời đầy đủ, không cắt ngang."""
+        system_message = """Bạn là một trợ lý ảo thông minh, thân thiện và hữu ích. 
+        Bạn có dữ liệu từ một số tài liệu. Sử dụng thông tin từ tài liệu để trả lời."""
 
         # Prepare final query
         final_query = f"{system_message}\n\n{request.query}"
@@ -155,15 +148,15 @@ Bạn có dữ liệu từ một số tài liệu.
             "chat_history": updated_chat_history
         }
 
-class GroqLLM(Groq):
+class GroqLLM:
     def __init__(self, api_key: str, model: str = "llama-3.3-70b-versatile", max_tokens: int = 1024):
-        super().__init__(api_key=api_key)
+        self.client = GroqClient(api_key=api_key)
         self.model = model
         self.max_tokens = max_tokens
 
-    def generate_response(self, prompt: str) -> str:
+    def __call__(self, prompt: str) -> str:
         try:
-            response = self.chat.completions.create(
+            response = self.client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
                 model=self.model,
                 max_tokens=self.max_tokens
