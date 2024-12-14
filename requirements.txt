@@ -29,4 +29,4 @@ gunicorn==21.2.0
 httpx==0.26.0
 
 # Development & Debugging
-logging>=0.5.1.2
+logging
