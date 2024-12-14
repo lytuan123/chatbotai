@@ -1,10 +1,25 @@
-fastapi
-uvicorn
-python-dotenv
-httpx
-langchain
-sentence-transformers
-faiss-cpu
-groq
-fastapi
+# Core Python libraries
+fastapi==0.109.0
+uvicorn==0.27.0
+python-dotenv==1.0.0
 
+# AI and Machine Learning
+langchain==0.1.5
+sentence-transformers==2.3.1
+groq==0.3.0
+faiss-cpu==1.7.4
+
+# Data handling
+numpy==1.26.3
+torch==2.1.2
+
+# Optional but recommended
+pydantic==2.6.1
+typing-extensions==4.9.0
+
+# For API and async
+httpx==0.26.0
+requests==2.31.0
+
+# Additional utilities
+jsonschema==4.17.3
