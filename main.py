@@ -8,6 +8,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from fastapi.responses import HTMLResponse
 
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import FAISS
@@ -128,6 +129,10 @@ vector_db_service = VectorDBService(Config.MODEL_NAME)
 chat_service = ChatService(llm_service, vector_db_service)
 
 # Endpoint
+@app.get("/") # Đã thêm endpoint GET ở đây
+async def root():
+    return {"message": "Hello from FastAPI on Railway!"}
+
 @app.post("/chat")
 async def chat_endpoint(
     query: str, 
@@ -140,6 +145,4 @@ async def chat_endpoint(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Không cần run uvicorn trong file main.py khi dùng Railway
